@@ -9,40 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var textField1: UITextField!
-    @IBOutlet weak var textField2: UITextField!
-    @IBOutlet weak var textField3: UITextField!
-    @IBOutlet weak var textField4: UITextField!
-    @IBOutlet weak var textField5: UITextField!
-    @IBOutlet weak var resultLabel: UILabel!
-    
-    var resultInt: Int = 0
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
+    @IBOutlet private weak var textField1: UITextField!
+    @IBOutlet private weak var textField2: UITextField!
+    @IBOutlet private weak var textField3: UITextField!
+    @IBOutlet private weak var textField4: UITextField!
+    @IBOutlet private weak var textField5: UITextField!
+    @IBOutlet private weak var resultLabel: UILabel!
     
     @IBAction func calcButtonAction(_ sender: UIButton) {
+        let textFieldArray: [UITextField] = [textField1, textField2, textField3, textField4, textField5]
         
-        let TextFieldArray: [UITextField] = [textField1, textField2, textField3, textField4, textField5]
-        
-        let IntArray = TextFieldArray
+        let intArray = textFieldArray
             .map { $0.text ?? "" }
             .map { Int($0) ?? 0 }
         
-        for item in IntArray {
+        var resultInt: Int = 0
+        for item in intArray {
             resultInt += item
         }
         
         resultLabel.text = String(resultInt)
-        resultInt = 0
-        
     }
-    
-    
-    
 }
-
-
-
